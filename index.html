@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TempMail - Identity</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="mobile-wrapper">
+        <header class="main-header">
+            <h1 class="logo">TempMail</h1>
+            <div class="profile-pic">
+                <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="Profile">
+            </div>
+        </header>
+
+        <main id="content-area">
+            <section id="home" class="tab-content active">
+                <div class="hero-card">
+                    <div class="shield-icon">🛡️</div>
+                    <h2>Temp Identity</h2>
+                    <p>Gunakan email sementara ini untuk verifikasi agar privasi utamamu tetap aman.</p>
+                </div>
+
+                <div class="email-box-card">
+                    <label>EMAIL KAMU SAAT INI</label>
+                    <div class="email-display">
+                        <span id="email-text">Generating...</span>
+                        <button class="copy-btn" onclick="copyEmail()">📋</button>
+                    </div>
+                    <div class="status-refresh">
+                        <span class="dot"></span> Auto-refresh: 5s
+                    </div>
+                </div>
+            </section>
+
+            <section id="inbox" class="tab-content">
+                <h2>Riwayat Inbox</h2>
+                <div class="empty-state">
+                    <div class="empty-icon">📥</div>
+                    <p>Belum ada pesan terbaca.</p>
+                </div>
+                <div id="read-messages-list"></div>
+            </section>
+
+            <section id="updates" class="tab-content">
+                <h2>Update Baru</h2>
+                <div id="unread-messages-list">
+                    <div class="empty-state">
+                        <div class="empty-icon">🔔</div>
+                        <p>Belum ada pesan baru.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="docs" class="tab-content">
+                <h2>Dokumentasi</h2>
+                <div class="docs-card">
+                    <h3>Dokumentasi Sistem</h3>
+                    <p>Baca detail teknis, keamanan, dan arsitektur sistem.</p>
+                    <button class="btn-black">📖 Buka Dokumentasi Penuh</button>
+                </div>
+                <div class="usage-card">
+                    <h3>Cara Penggunaan</h3>
+                    <ul>
+                        <li>Tekan tombol <strong>+</strong> untuk generate email.</li>
+                        <li>Salin email dan gunakan untuk daftar akun.</li>
+                        <li>Cek tab <strong>Updates</strong> untuk pesan masuk.</li>
+                        <li>Klik pesan untuk membaca. Setelah dibaca, pesan pindah ke <strong>Inbox</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <button class="fab" onclick="generateEmail()">+</button>
+
+        <nav class="bottom-nav">
+            <div class="nav-item active" onclick="switchTab('home', this)">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Home</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('inbox', this)">
+                <span class="nav-icon">📥</span>
+                <span class="nav-label">Inbox</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('updates', this)">
+                <span class="nav-icon">🔔</span>
+                <span class="nav-label">Updates</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('docs', this)">
+                <span class="nav-icon">📋</span>
+                <span class="nav-label">Docs</span>
+            </div>
+        </nav>
+    </div>
+
+    <div id="mail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3 id="view-subject"></h3>
+            <p id="view-from"></p>
+            <div id="view-body"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
